@@ -22,8 +22,7 @@
 
 ## 5.配置网络
 ### (1)NAT
-* NAT:默认情况下,qemu调用-nic和-user选项将单个网络适配器添加到虚拟机并提供NAT外
-* 部网络访问
+* NAT:默认情况下,qemu调用-nic和-user选项将单个网络适配器添加到虚拟机并提供NAT外部网络访问
 ### (2)桥接
 * 1.安装桥接工具:```sudo apt-get install bridge-utils```
 * 2.修改宿主系统配置:
