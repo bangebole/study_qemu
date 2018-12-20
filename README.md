@@ -19,7 +19,7 @@
 * -m 512:运行内存
 * -enabel-kvm:启动kvm加速
 ## 4.运行系统
-* ```qemu-system-x86_64 -hda debian.img -m 512
+* ```qemu-system-x86_64 -hda debian.img -m 512```
 
 ## 5.配置网络
 ### (1)NAT
