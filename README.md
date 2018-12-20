@@ -2,9 +2,7 @@
 * 学习qemu的使用
 
 ## 2.创建盘
-### (1)
 * ```qemu-image create debian.img 2G```
-### (2)
 * ```qemu-image create -f qcow2 debian.qcow 2G```
 * -f qcow2:qcow2镜像格式是QEMU模拟器支持的一种磁盘镜像。它也是可以用一个文件的
 * 形式来表示一块固定大小的块设备磁盘。与普通的镜像相比有一下特性:
@@ -13,7 +11,6 @@
 > * 支持快照(snaoshot),镜像文件能够包含多个快照历史;
 > * 可选择基于zlib的压缩方式;
 > * 可以选择AES加密
-### (3)
 * ```dd if=/dev/zero of=rootfs.img bs=1M count=1024```
 * ```mkfs.ext4 rootfs.img```
 
@@ -25,14 +22,13 @@
 * ```qemu-system-x86_64 -hda debian.img -m 512
 
 ## 5.配置网络
-### (1)
+### (1)NAT
 * NAT:默认情况下,qemu调用-nic和-user选项将单个网络适配器添加到虚拟机并提供NAT外
 * 部网络访问
-### (2)
-* 桥接
+### (2)桥接
 > * 1.安装桥接工具:```sudo apt-get install bridge-utils```
 > * 2.修改宿主系统配置:
------------------------------------------------------
+```
 #/etc/network/interfaces
 #以下是之前未添加网桥时的配置
     # The primary network interface
@@ -61,7 +57,7 @@ auto br0
 #添加接口enp3s0,上网方式采用自动
     auto enp3s0
     iface eth0 inet manual
-----------------------------------------------------------------
+```
 > * 3.启动:```sudo qemu-system-x86_64 -hda debian.qcow -net nic -net tap,ifname=tap0,script=no,downscript=no```
 
 ## 6.参考资料
